@@ -1,0 +1,54 @@
+package l3;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Book {
+	
+	public String Titlu;
+	
+	public Book() {}
+	public Book(String T) {
+		this.Titlu= T;
+	}
+	public String getTitlu() {
+		return Titlu;
+	}
+	public void setTitlu(String titlu) {
+		Titlu = titlu;
+	}
+	List<Author> a1 = new ArrayList<Author>();
+	List<Element> e1 = new ArrayList<Element>();
+	
+	
+	
+	public void addAuthor(Author author) {
+		a1.add(author);
+		
+	}
+	public void Accept(Visitor visitor){
+        for(Element element: e1){
+            element.accept(visitor);
+        }
+    }
+	
+	public void addContent(Element Element) {
+		e1.add(Element);
+		
+	}
+	public void print() {
+		System.out.println(Titlu);
+		System.out.println("Authors:");
+		for(int i=0;i<a1.size();i++) {
+			a1.get(i).print();
+		}
+		for(int i=0;i<e1.size();i++) {
+			e1.get(i).print();
+		}
+		
+	}
+	public int createAuthor (String authName) {
+		Author auth = new Author(authName);
+		a1.add(auth);
+		return a1.indexOf(auth);
+	}
+}
